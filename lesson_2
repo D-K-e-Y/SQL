@@ -4,17 +4,18 @@ user=root
 password=
 
 --Создайте базу данных example, разместите в ней таблицу users, состоящую из двух столбцов, числового id и строкового name.
-mysql    
+mysql -u username -p   
 CREATE DATABASE example;
 CREATE DATABASE sample;
 USE example;
 CREATE TABLE users (id SERIAL PRIMARY KEY, name COMMENT 'Имя пользователя');
 
 --Создайте дамп базы данных example из предыдущего задания, разверните содержимое дампа в новую базу данных sample.
-mysqldump example > sample.sql
-mysql sample < sample.sql  
-mysql
+mysqldump -u username -p example > sample.sql
+mysql -u username -p sample < sample.sql  
+mysql -u username -p
 SHOW DATABASES;
 DESCRIBE sample.users;
 
 --(по желанию) Ознакомьтесь более подробно с документацией утилиты mysqldump. Создайте дамп единственной таблицы help_keyword базы данных mysql. Причем добейтесь того, чтобы дамп содержал только первые 100 строк таблицы.
+mysqldump -u username -p --where="true limit 100" --all-databases > dump.sql
